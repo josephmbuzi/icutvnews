@@ -1,0 +1,232 @@
+/*
+Template Name: Tnews
+Template URL: https://themeholy.com/html/tnews/
+Description: News & Magazine HTML Template
+Author: themeholy
+Author URI: https://themeforest.net/user/themeholy
+Version: 1.0.0
+*/
+/*=================================
+    CSS Index Here
+==================================*/
+/*
+
+01. Theme Base
+    1.1. Mixin
+    1.2. Function
+    1.3. Variable
+    1.4. Typography
+    1.5. Wordpress Default
+	
+02. Reset
+    2.1. Container
+    2.2. Grid
+    2.3. Input
+    2.4. Slick Slider
+    2.5. Mobile Menu
+	
+03. Utilities
+    3.1. Preloader
+    3.2. Buttons
+    3.3. Titles
+    3.4. Common
+    3.6. Font
+    3.7. Background
+    3.8. Text Color
+    3.9. Overlay
+    3.10. Animation
+    
+04. Template Style
+    4.1. Widget
+    4.2. Header
+    4.3. Footer
+    4.4. Breadcumb
+    4.5. Pagination
+	4.6. Blog
+	4.7. Blog Details
+    4.8. Comments
+	4.9. Error
+	4.00. Popup Search
+	4.00. Popup newsletter
+	4.00. Popup Side Menu
+	4.00. Wocommerce
+    4.00. Products
+    4.00. Cart
+    4.00. Checkout
+    4.00. Wishlist
+	4.00. Contact
+    4.00. About
+    4.00. Counter
+	4.00. Blog Extra
+	4.00. Simple Sections
+	4.00. Breaking News
+	4.00. Tab Menu
+	4.00. Hero
+	4.00. Dark Theme
+
+05. Spacing
+
+*/
+/*=================================
+    CSS Index End
+==================================*/
+
+
+/*=================================
+   01. Theme Base
+==================================*/ 
+/*------------------- 1.1. Mixin -------------------*/
+@import 'base/mixin';
+
+/*------------------- 1.2. Function -------------------*/
+@import 'base/function';
+
+/*------------------- 1.3. Variable-------------------*/
+@import 'base/variable';
+
+/*------------------- 1.4. Typography -------------------*/
+@import 'base/typography';
+
+/*------------------- 1.5. Wordpress Default -------------------*/
+// @import 'base/wpdefault';
+
+
+/*=================================
+    02. Reset
+==================================*/
+/*------------------- 2.1. Container -------------------*/
+@import 'reset/container';
+
+/*------------------- 2.2. Grid -------------------*/
+@import 'reset/grid';
+
+/*------------------- 2.3. Input -------------------*/
+@import 'reset/input';
+
+/*------------------- 2.4. Slick Slider -------------------*/
+@import 'reset/slick-slider';
+
+/*------------------- 2.5. Mobile Menu -------------------*/
+@import 'reset/mobilemenu';
+
+
+/*=================================
+    03. Utilities
+==================================*/
+/*------------------- 3.1. Preloader -------------------*/
+@import 'utilities/preloader';
+
+/*------------------- 3.2. Buttons -------------------*/
+@import 'utilities/btns';
+
+/*------------------- 3.3. Titles -------------------*/
+@import 'utilities/titles';
+
+/*------------------- 3.4. Common -------------------*/
+@import 'utilities/common';
+
+/*------------------- 3.6. Font -------------------*/
+@import 'utilities/font';
+
+/*------------------- 3.7. Background -------------------*/
+@import 'utilities/background';
+
+/*------------------- 3.8. Text Color -------------------*/
+@import 'utilities/text-color';
+
+/*------------------- 3.9. Overlay -------------------*/
+@import 'utilities/overlay';
+
+/*------------------- 3.10. Animation -------------------*/
+@import 'utilities/animation';
+
+
+/*=================================
+    04. Template Style
+==================================*/
+/*------------------- 4.1. Widget  -------------------*/
+@import 'template/widgets/widget-default-list';
+@import 'template/widgets/widget-sidebar';
+@import 'template/widgets/widget-footer';
+
+
+/*------------------- 4.2. Header  -------------------*/
+@import 'template/headers/header';
+
+/*------------------- 4.3. Footer  -------------------*/
+@import 'template/footers/footer';
+
+/*------------------- 4.4. Breadcumb  -------------------*/
+@import 'template/breadcumb/breadcumb-v1';
+
+/*------------------- 4.5. Pagination  -------------------*/
+@import 'template/sections/pagination-v1';
+
+/*------------------- 4.6. Blog  -------------------*/
+@import 'template/sections/blog';
+
+/*------------------- 4.7. Blog Details -------------------*/
+@import 'template/sections/blog-details';
+
+/*------------------- 4.8. Comments  -------------------*/
+@import 'template/sections/comments';
+
+/*------------------- 4.9. Error  -------------------*/
+@import 'template/sections/error';
+
+/*------------------- 4.00. Popup Search  -------------------*/
+@import 'template/sections/popupsearch-v1';
+
+/*------------------- 4.00. Popup newsletter  -------------------*/
+@import 'template/sections/popup-newsletter';
+
+/*------------------- 4.00. Popup Side Menu  -------------------*/
+@import 'template/sections/sidemenu-v1';
+
+/*------------------- 4.00. Wocommerce  -------------------*/
+@import 'template/sections/woocommerce';
+
+/*------------------- 4.00. Products  -------------------*/
+@import 'template/sections/products';
+
+/*------------------- 4.00. Cart  -------------------*/
+@import 'template/sections/cart';
+
+/*------------------- 4.00. Checkout  -------------------*/
+@import 'template/sections/checkout';
+
+/*------------------- 4.00. Wishlist  -------------------*/
+@import 'template/sections/wishlist';
+
+/*------------------- 4.00. Contact  -------------------*/
+@import 'template/sections/contact';
+
+/*------------------- 4.00. About  -------------------*/
+@import 'template/sections/about';
+
+/*------------------- 4.00. Counter  -------------------*/
+@import 'template/sections/counter';
+
+/*------------------- 4.00. Blog Extra -------------------*/
+@import 'template/sections/blog-extra';
+
+/*------------------- 4.00. Simple Sections  -------------------*/
+@import 'template/sections/simple-sections';
+
+/*------------------- 4.00. Breaking News -------------------*/
+@import 'template/sections/breaking-news';
+
+/*------------------- 4.00. Tab Menu -------------------*/
+@import 'template/sections/tab-menu';
+
+/*------------------- 4.00. Hero -------------------*/
+@import 'template/sections/hero';
+
+/*------------------- 4.00. Dark Theme -------------------*/
+@import 'template/sections/dark-theme';
+
+/*=================================
+    05. Spacing
+==================================*/
+@import 'spacing/spacing'; 
+

@@ -1,0 +1,194 @@
+blockquote,
+.wp-block-quote {
+    font-size: 20px;
+    line-height: 1.545;
+    padding: 50px 50px 50px 50px;
+    display: block;
+    position: relative;
+    background-color: $smoke-color;
+    overflow: hidden;
+    margin: 30px 0;
+    color: $title-color;
+
+    p {
+        font-size: inherit;
+        font-family: inherit;
+        margin-top: -0.3em;
+        margin-bottom: 22px;
+        line-height: inherit;
+        color: inherit;
+        width: 100%;
+        position: relative;
+        z-index: 3;
+        a {
+            color: inherit;
+        }
+    }
+
+    &:before {
+        content: url('data:image/svg+xml,<svg width="54" height="40" viewBox="0 0 54 40" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_311_7235)"><path d="M11.3087 24.2569V23.2569H10.3087H1.60408C1.28718 23.2569 1 22.9905 1 22.6238V1.63309C1 1.26637 1.28718 1 1.60408 1H22.2219C22.5388 1 22.826 1.26637 22.826 1.63309V22.6238C22.826 22.6933 22.8149 22.7621 22.7934 22.8275L22.7929 22.8289L17.6385 38.5721C17.5519 38.8371 17.3159 39 17.0675 39H11.9128C11.596 39 11.3087 38.7334 11.3087 38.3669V24.2569Z" stroke="%2354595F" stroke-width="2"/><path d="M41.3087 24.2569V23.2569H40.3087H31.6041C31.2872 23.2569 31 22.9905 31 22.6238V1.63309C31 1.26637 31.2872 1 31.6041 1H52.2219C52.5388 1 52.826 1.26637 52.826 1.63309V22.6238C52.826 22.6933 52.8149 22.7621 52.7934 22.8275L52.7929 22.8289L47.6385 38.5721C47.5519 38.8371 47.3159 39 47.0675 39H41.9128C41.596 39 41.3087 38.7334 41.3087 38.3669V24.2569Z" stroke="%2354595F" stroke-width="2"/></g><defs><clipPath id="clip0_311_7235"><rect width="54" height="40" fill="white"/></clipPath></defs></svg>');
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+        line-height: 0.8;
+    }
+
+    cite {
+        display: block;
+        font-size: 16px;
+        position: relative;
+        border-color: inherit;
+        line-height: 1;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: -0.1em;
+        font-style: normal;
+        font-family: $title-font;
+        padding-left: 40px;
+        margin-left: 10px;
+        color: $body-color;
+
+        &:before {
+            content: "";
+            height: 2px;
+            width: 40px;
+            background-color: $theme-color;
+            position: absolute;
+            bottom: 8px;
+            left: -10px;
+        }
+    }
+    &.is-large:not(.is-style-plain),
+    &.is-style-large:not(.is-style-plain),
+    &.style-left-icon,
+    &.is-large,
+    &.is-style-large,
+    &.has-text-align-right {
+        padding: 50px;
+        &:not(.has-text-align-right) cite {
+            text-align: left;
+        }
+    }
+    &.style-left-icon {
+        font-size: 18px;
+        color: $body-color;
+        font-weight: 400;
+        line-height: 1.556;
+        background-color: $smoke-color;
+        padding-left: 160px;
+        &:before {
+            right: unset;
+            left: 56px;
+            top: 60px;
+            font-size: 6rem;
+            font-weight: 400;
+            line-height: 4rem;
+            color: $theme-color;
+            text-shadow: none;
+        }
+        cite {
+            color: $title-color;
+            &:before {
+                background-color: $title-color;
+                top: 8px;
+            }
+        }
+    }
+    &.is-large,
+    &.is-style-large {
+        cite {
+            &:before {
+                top: unset;
+                bottom: 8px;
+            }
+        }
+    }
+    &.has-text-align-right {
+        &:before {
+            right: unset;
+            left: 60px;
+        }
+        cite {
+            padding-left: 0;
+            padding-right: 60px;
+            &:before {
+                right: 0;
+                left: unset;
+            }
+        }
+    }
+    &:not(:has( > cite)) {
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+            cite {
+                margin-top: 18px;
+            }
+        }
+    }
+}
+.wp-block-pullquote {
+    color: $title-color;
+    padding: 0;
+    cite {
+        padding-left: 0;
+        margin-left: 0;
+        &:before {
+            display: none;
+        }
+    }
+}
+
+blockquote.has-very-dark-gray-color {
+    color: $title-color !important;
+}
+.wp-block-column {
+    blockquote,
+    .wp-block-quote {
+        padding: 30px 15px 30px 15px;
+        &.style-left-icon,
+        &.is-large:not(.is-style-plain),
+        &.is-style-large:not(.is-style-plain),
+        &.has-text-align-right {
+            padding: 30px 15px 30px 15px;
+        }
+        cite {
+            padding-left: 0;
+            margin-left: 0;
+            &:before {
+                display: none;
+            }
+        }
+    }
+}
+
+@include lg {
+    blockquote,
+    .wp-block-quote {
+        padding: 40px 20px 40px 20px;
+        font-size: 18px;
+        &:before {
+            right: 20px;
+            bottom: 30px;
+        }
+        &.style-left-icon,
+        &.is-large:not(.is-style-plain),
+        &.is-style-large:not(.is-style-plain),
+        &.has-text-align-right {
+            padding: 40px 20px 40px 20px;
+        }
+    }
+}
+
+@include sm {
+    .wp-block-pullquote.is-style-solid-color blockquote {
+        max-width: 90%;
+    }
+    blockquote,
+    .wp-block-quote {
+        cite {
+            font-size: 18px;
+        }
+    }
+}

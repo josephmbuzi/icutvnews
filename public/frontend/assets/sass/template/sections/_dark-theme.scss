@@ -1,0 +1,81 @@
+.dark-theme {
+    --title-color         : #fff;
+    --body-color          : #B5B5B5;
+    --smoke-color         : #171718;
+    --smoke-color2        : #171718;
+    --border-color        : #54595F;
+    --gray-color          : #54595F;
+    --body-bg             : #1e1e1e;
+    .footer-wrapper {
+        --border-color: #54595F;
+    }
+    .author-details {
+        --border-color        : #54595F;
+    }
+    .light-img {
+        display: none;
+    }
+    .dark-img {
+        display: inline-block;
+    }
+    .header-top,
+    .news-area,
+    .breadcumb-wrapper {
+        --border-color: #282828;
+    }
+    .theme-toggler {
+        .light {
+            display: none;
+        }
+        .dark {
+            display: inline;
+        }
+    }
+    .th-btn:hover, 
+    .th-btn.active {
+        color: #080809;;
+    }
+    .category-card .box-icon img {
+        filter: invert(1);
+    }
+    .story-box-wrap .story-year {
+        background-color: $smoke-color;
+    }
+    .author-details .th-social {
+        a {
+            --smoke-color: #1e1e1e;
+        }
+    }
+    .main-menu ul.sub-menu,
+    .woocommerce-form-register, 
+    .woocommerce-form-coupon, 
+    .woocommerce-form-login {
+        box-shadow: 0px 6px 30px rgba(255, 255, 255, 0.05);
+    }
+    .box-title-30,
+    .box-title-20,
+    .box-title-18,
+    .box-title-24,
+    .box-title-22 {
+        font-weight: 600;
+    }
+
+}
+html.dark-theme {
+    .theme-switcher {
+        .light {
+            display: none;
+        }
+        .dark {
+            display: inline-block;
+        }
+    }
+}
+
+html.dark-theme {
+    .dark-theme {
+        > .blog-style3 {
+            --border-color: #54595F;
+        }
+    }
+}

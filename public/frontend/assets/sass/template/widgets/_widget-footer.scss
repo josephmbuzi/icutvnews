@@ -1,0 +1,218 @@
+
+.footer-widget {
+    margin-bottom: 40px;
+
+    &,
+    .widget {
+        padding: 0;
+        border: none;
+        padding-bottom: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    
+    .form-group {
+        > i {
+            color: $theme-color;
+            top: 18px;
+        }
+    }
+
+    .sidebar-gallery {
+        max-width: 287px;
+        gap: 11px;
+        .gallery-thumb {
+            border-radius: 5px;
+        }
+    }
+
+    .widget_title {
+        max-width: 270px;
+        font-weight: 600;
+        color: $white-color;
+        text-transform: capitalize;
+        margin: -0.12em 0 28px 0;
+        padding: 0;
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+
+    &.widget_meta,
+    &.widget_pages,
+    &.widget_archive,
+    &.widget_categories,
+    &.widget_nav_menu {
+        ul {
+            margin-top: -4px;
+        }
+        .menu,
+        > ul {
+            margin-bottom: -4px;
+        }
+
+        a {
+            color: $body-color;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 0 0 0 18px;
+            margin-bottom: 16px;
+            font-family: $body-font;
+            display: block;
+            max-width: 100%;
+            width: max-content;
+            padding-right: 0;
+            background-color: transparent;
+            border-bottom: none;
+            position: relative;
+            &:before {
+                display: none;
+            }
+            &:after {
+                content: "\f054";
+                right: unset;
+                left: 0;
+                top: 2px;
+                background-color: transparent;
+                height: auto;
+                width: auto;
+                line-height: inherit;
+                border-radius: 0;
+                color: inherit;
+                transition: 0.3s transform ease-in-out;
+            }
+
+            &:hover {
+                background-color: transparent;
+                color: $theme-color;
+                &:after {
+                    transform: translateX(4px)
+                }
+            }
+        }
+
+        li {
+            > span {
+                @include equal-size(auto);
+                position: relative;
+                background-color: transparent;
+                color: $body-color;
+                line-height: 1;
+            }
+
+            &:last-child {
+                a {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .recent-post {
+        max-width: 285px;
+        margin-top: -0.1em;
+        .post-title {
+            color: $white-color;
+        }
+        &:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+        .recent-post-meta {
+            // a {
+            //     color: $gray-color;
+            // }
+        }
+    }
+}
+.about-logo {
+    margin-bottom: 15px;
+}
+.th-widget-about {
+    .about-logo {
+        margin-bottom: 30px;
+    }
+    .about-text {
+        margin-bottom: 30px;
+        margin-top: -0.45em;
+    }
+}
+
+.footer-text {
+    margin-top: -0.45em;
+    margin-bottom: 25px;
+}
+.social-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .social-title {
+        font-size: 20px;
+        color: $white-color;
+        font-weight: 600;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+}
+.icon-group {
+    a {
+        color: $white-color;
+        font-size: 18px;
+        margin-right: 17px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+.newsletter-form {
+    position: relative;
+    max-width: 465px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .th-btn {
+        min-width: 145px;
+        padding: 21px 20px;
+    }
+    &.width2 {
+        input {
+            height: 56px;
+        }
+        max-width: 600px;
+        justify-content: center;
+        @include md {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+@include lg {
+    .footer-widget {
+        &.widget_meta,
+        &.widget_pages,
+        &.widget_archive,
+        &.widget_categories,
+        &.widget_nav_menu {
+            a {
+                margin-bottom: 16px;
+            }
+    
+        }
+    }
+}
+
+@include sm {
+    .footer-widget {
+        .widget_title {
+            margin-bottom: 35px;
+        }
+    }
+    .th-widget-about .about-text {
+        margin-bottom: 20px;;
+    }
+    .social-box.mb-30 {
+        margin-bottom: 25px;
+    }
+}

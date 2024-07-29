@@ -1,0 +1,102 @@
+/* Contact Page ---------------------------------- */ 
+.contact-feature {
+    &-wrap {
+        @include lg {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: space-between;
+            @include sm {
+                grid-template-columns: repeat(2, 1fr);
+                justify-content: center;
+            }
+            @include xs {
+                grid-template-columns: repeat(1, 1fr);
+                justify-content: center;
+            }
+        }
+    }
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+    text-align: left;
+    @include md {
+        flex-direction: column;
+        text-align: center;
+    }
+    &:last-child {
+        margin-bottom: 0 !important;
+    }
+    .box-content {
+        max-width: 235px;
+        @include xs {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        a {
+            display: block;
+            max-width: fit-content;
+            color: inherit;
+            @include md {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+    .box-title-22 {
+        margin-bottom: 5px;
+    }
+}
+
+.contact-form {
+    select,
+    .form-control,
+    .form-select,
+    textarea,
+    input {
+        background-color: $body-bg;
+    }
+    .form-group {
+        > i {
+            background-color: $body-bg;
+            color: $theme-color;
+            width: 18px;
+            text-align: right;
+        }
+    }
+}
+
+.quote-form-box {
+    padding: 50px;
+    background-color: $smoke-color;
+    textarea {
+        min-height: 120px;
+    }
+    .form-title {
+        margin-top: -0.24em;
+        margin-bottom: 20px;
+    }
+    @include lg {
+        text-align: center;
+    }
+}
+
+@include xs {
+    .quote-form-box {
+        padding: 40px 20px;
+    }
+}
+.contact-map {
+    line-height: 0px;
+    iframe {
+        height: 500px;
+        @include lg {
+            height: 360px;
+        }
+        @include sm {
+            height: 260px;
+        }
+    }
+}

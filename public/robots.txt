@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin/      # Disallow access to any admin or backend routes
+Disallow: /private/    # Disallow access to any private or restricted areas
+Disallow: /api/        # Disallow access to any API routes
+Disallow: /uploads/    # Disallow access to uploaded files and media
+
+Allow: /              # Allow access to the root of the website
+Allow: /blogs/all*       # Allow access to your blog content
+Allow: /reviews/all*       # Allow access to your blog content
+
+Sitemap: https://www.yamfumu.co/sitemap.xml

@@ -1,0 +1,151 @@
+.checklist {
+    ul {
+        padding-left: 0;
+        list-style: none;
+        text-align: left;
+        margin-bottom: 0;
+    }
+    li {
+        color: $title-color;
+        font-weight: 500;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        > i {
+            color: $theme-color;
+        }
+        &:not(:last-child) {
+            margin-bottom: 11px;
+        }
+    }
+    &.style2 {
+        li {
+            > i {
+                font-size: 24px;
+                color: $theme-color2;
+            }
+        }
+    }
+    
+    &.mb-45 {
+        @include lg {
+            margin-bottom: 40px;
+        }
+    }
+}
+.th-video {
+    position: relative;
+    img {
+        border-radius: inherit;
+    }
+    .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+.rounded-10 {
+    border-radius: 10px;
+}
+.icon-box {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    &.has-right-line {
+        position: relative;
+        &:after {
+            content: '';
+            width: 160px;
+            height: 4px;
+            background: linear-gradient(90deg, $theme-color 0%, rgba(232, 58, 21, 0) 100%);
+            margin-left: 10px;
+            @include lg {
+                display: none;
+            }
+        }
+    }
+}
+
+.btn-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px 30px;
+}
+.box-title {
+    a {
+        color: inherit;
+        &:hover {
+            color: $theme-color;
+        }
+    }
+}
+.box-icon {
+    img {
+        transition: 0.4s ease-in-out;
+    }
+}
+.switcher-fixed {
+    position: fixed;
+    top: 50%;
+    right: 50px;
+    margin-top: -9px;
+    z-index: 20;
+    transform: rotate(90deg);
+    i {
+        transform: rotate(-90deg);
+    }
+    @include sm {
+        right: 20px;
+    }
+}
+.category-card {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 25px 10px;
+    &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $body-bg;
+        border: 1px solid $border-color;
+        z-index: -1;
+        transition: 0.4s ease-in-out;
+    }
+    .box-icon {
+        margin-bottom: 10px;
+    }
+    .box-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: -0.3em;
+    }
+    &:hover {
+        &:after {
+            transform: scaleX(0);
+        }
+        .box-icon {
+            img {
+                filter: invert(1);
+                transform: rotateY(360deg);
+            }
+        }
+        .box-title {
+            color: $white-color;
+        }
+    }
+}
+
+@include lg {
+    p {
+        &.mb-40 {
+            margin-bottom: 35px;
+        }
+        &.mb-45 {
+            margin-bottom: 38px;
+        }
+    }
+}

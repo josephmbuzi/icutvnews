@@ -1,0 +1,195 @@
+//--------------------------
+.box-title-50 {
+    font-size: 50px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-top: -0.22em;
+    @include xl {
+        font-size: 40px;
+    }
+    @include md {
+        font-size: 36px;
+    }
+    @include md {
+        font-size: 30px;
+        line-height: 1.3;
+    }
+    @include vxs {
+        font-size: 24px;
+    }
+}
+.box-title-40 {
+    font-size: 40px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin-top: -0.26em;
+    @include xl {
+        font-size: 34px;
+    }
+    @include md {
+        font-size: 28px;
+        line-height: 1.34;
+    }
+    @include md {
+        font-size: 24px;
+        line-height: 1.34;
+    }
+    @include vxs {
+        font-size: 22px;
+    }
+}
+.box-title-30 {
+    font-size: 30px;
+    line-height: 1.267;
+    font-weight: 700;
+    margin-top: -0.22em;
+    @include xl {
+        font-size: 28px;
+    }
+    @include md {
+        font-size: 24px;
+        line-height: 1.34;
+    }
+    @include vxs {
+        font-size: 22px;
+    }
+}
+.box-title-20 {
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 700;
+    margin-top: -0.26em;
+}
+.box-title-18 {
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+    margin-top: -0.26em;
+}
+.box-title-24 {
+    font-size: 24px;
+    line-height: 1.417;
+    font-weight: 700;
+    margin-top: -0.24em;
+    @media (max-width: 360px) {
+        font-size: 22px;
+    }
+}
+.box-title-22 {
+    font-size: 22px;
+    line-height: 1.364;
+    font-weight: 700;
+    margin-top: -0.22em;
+}
+
+.box-title2 {
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 700;
+    margin-top: -0.35em;
+    a {
+        color: inherit;
+        &:hover {
+            color: $theme-color;
+        }
+    }
+}
+//--------------------------
+.sec-title {
+    margin-bottom: calc(var(--section-title-space) - 7px);
+    margin-top: -0.2em;
+    font-size: 30px;
+    text-transform: capitalize;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    --bs-gutter-x: 24px;
+    @include sm {
+        font-size: 24px;
+    }
+    &.has-line {
+        &:after {
+            content: '';
+            height: 6px;
+            width: 100%;
+            flex: 1;
+            border-top: 1px dashed $gray-color;
+            border-bottom: 1px dashed $gray-color;
+            margin-left: var(--bs-gutter-x);
+        }
+        &.text-center {
+            justify-content: center;
+            &:before {
+                content: '';
+                height: 6px;
+                width: 100%;
+                flex: 1;
+                border-top: 1px dashed $gray-color;
+                border-bottom: 1px dashed $gray-color;
+                margin-right: var(--bs-gutter-x);
+            }
+        }
+    }
+    &.fs-20 {
+        --section-title-space: 30px;
+    }
+}
+
+.sec-title2 {
+    --section-title-space: 60px;
+    margin-bottom: calc(var(--section-title-space) - 7px);
+    margin-top: -0.24em;
+    @include md {
+        --section-title-space: 45px;
+    }
+}
+
+.sub-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: $theme-color;
+    text-transform: uppercase;
+    display: block;
+    margin-top: -0.3em;
+    margin-bottom: 16px;
+}
+
+.title-area {
+    --section-title-space: 60px;
+    margin-bottom: calc(var(--section-title-space) - 10px);
+    @include md {
+        --section-title-space: 45px;
+    }
+    .sec-title2 {
+        margin-bottom: 22px;
+    }
+    &.mb-0 {
+        .sec-title2 {
+            margin-bottom: -0.24em;
+        }
+    }
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+hr.title-line {
+    margin-top: 0;
+    background-color: $border-color;
+    opacity: 1;
+}
+.sec-btn {
+    text-align: center;
+}
+.sec-btn,
+.title-line {
+    margin-bottom: var(--section-title-space);
+}
+
+@include sm {
+    :root {
+        --section-title-space: 34px;
+    }
+}

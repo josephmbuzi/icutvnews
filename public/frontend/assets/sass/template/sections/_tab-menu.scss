@@ -1,0 +1,62 @@
+.tab-menu {
+    display: flex;
+    background-color: $smoke-color;
+    border-radius: 4px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    margin-bottom: 28px;
+    .tab-btn {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 8px 5px 6px 5px;
+        color: $title-color;
+        flex: 1;
+        background-color: transparent;
+        border: none;
+        &.active {
+            color: $white-color;
+        }
+    }
+    .indicator {
+        position: absolute;
+        top: var(--pos-y);
+        left: var(--pos-x);
+        height: var(--height-set);
+        width: var(--width-set);
+        background-color: $theme-color;
+        transition: 0.4s ease-in-out;
+        z-index: -1;
+    }
+}
+
+//------------------------------------
+.filter-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    @include vxs {
+        gap: 5px;
+    }
+    .tab-btn {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        background-color: $body-bg;
+        border: 1px solid $border-color;
+        color: $title-color;
+        padding: 2px 16px;
+        border-radius: 4px;
+        
+        transition: 0.4s ease-in-out;
+        &:last-child {
+            margin-right: 0;
+        }
+        &.active {
+            background-color: $theme-color;
+            color: $white-color;
+            border-color: $theme-color;
+        }
+    }
+}

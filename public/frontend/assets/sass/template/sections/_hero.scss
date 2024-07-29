@@ -1,0 +1,128 @@
+/* Hero Global ---------------------------------- */
+.th-hero-wrapper {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    .slick-arrow {
+        border: none;
+    }
+    .slick-dots {
+        position: absolute;
+        top: 50%;
+        left: 80px;
+        transform: translateY(-50%);
+    }
+}
+
+.th-hero-bg {
+    position: absolute;
+    inset: 0;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+/* Hero 1 ---------------------------------- */
+.hero-1 {
+    --body-color: #fff;
+    --title-color: #fff;
+    .blog-bg-style1 {
+        padding: 120px 0 270px 0;
+        max-width: 810px;
+        position: relative;
+        z-index: 6;
+    }
+    .blog-text {
+        font-size: 18px;
+        margin-top: 22px;
+        max-width: 690px;
+        margin-bottom: -0.45em;
+    }
+}
+
+.hero-tab {
+    &-area {
+        position: absolute;
+        bottom: 40px;
+        right: 0;
+        width: 100%;
+    }
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    border-top: 1px solid #54595F;
+    padding-top: 30px;
+    position: relative;
+    .tab-btn {
+        cursor: pointer;
+    }
+    .indicator {
+        position: absolute;
+        left: var(--pos-x);
+        top: -1px;
+        background-color: $theme-color;
+        height: 2px;
+        width: var(--width-set);
+        transition: 0.4s ease-in-out;
+    }
+}
+
+@include lg {
+    .hero-1 {
+        .blog-bg-style1 {
+            padding: 90px 0 220px 0;
+            max-width: 740px;
+        }
+    }
+    .hero-tab {
+        .tab-btn {
+            img {
+                min-height: 60px;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+@include md {
+    .hero-1 {
+        .blog-bg-style1 {
+            padding: 90px 0 190px 0;
+            max-width: 540px;
+        }
+        .blog-text {
+            font-size: 16px;
+            max-width: 600px;
+        }
+    }
+    .hero-tab {
+        gap: 12px;
+        padding-top: 16px;
+    }
+}
+
+@include sm {
+    .hero-1 {
+        .blog-bg-style1 {
+            text-align: center;
+        }
+    }
+}
+
+@include xs {
+    .hero-1 {
+        .blog-bg-style1 {
+            padding: 90px 0 160px 0;
+        }
+    }
+    .hero-tab {
+        &-area {
+            bottom: 20px;
+        }
+        .tab-btn img {
+            min-height: 40px;
+        }
+    }
+}

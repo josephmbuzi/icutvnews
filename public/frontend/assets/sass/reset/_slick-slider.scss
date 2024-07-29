@@ -1,0 +1,161 @@
+.slick-track {
+    > [class*=col]:not(.col-auto) { 
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x)/ 2);
+        padding-left: calc(var(--bs-gutter-x)/ 2);
+        margin-top: var(--bs-gutter-y);
+    }
+    .col-auto {
+        padding-right: calc(var(--bs-gutter-x)/ 2);
+        padding-left: calc(var(--bs-gutter-x)/ 2);
+        margin-top: var(--bs-gutter-y);
+    }
+}
+
+.slick-track {
+    min-width: 100%;
+}
+
+.slick-list {
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+}
+
+.slick-slide img {
+    display: inline-block;
+}
+
+.slick-dots {
+    list-style-type: none;
+    padding: 0;
+    margin: 40px 0 0px 0;
+    line-height: 0;
+    text-align: center;
+    height: max-content;
+
+    li {
+        display: inline-block;
+        margin-right: 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    button {
+        font-size: 0;
+        padding: 0;
+        width: 10px;
+        height: 10px;
+        line-height: 0;
+        border-radius: 9999px;
+        border: none;
+        background-color: $border-color;
+        transition: all ease 0.4s;
+        position: relative;
+        z-index: 2;
+        &:before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border: 1px solid $theme-color;
+            border-radius: inherit;
+            transition: 0.4s ease-in-out;
+            transform: scale(0.4);
+            z-index: -1;
+            visibility: hidden;
+        }
+
+        &:hover {
+            border-color: $theme-color;
+        }
+    }
+
+    .slick-active {
+        button {
+            background-color: $theme-color;
+            &::before {
+                opacity: 1;
+                visibility: visible;
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+.slick-arrow {
+    display: inline-block;
+    padding: 0;
+    background-color: $body-bg;
+    color: $title-color;
+    position: absolute;
+    top: 50%;
+    border: 1px solid $border-color;
+    // box-shadow: 0px 6px 20px rgba(0, 96, 255, 0.6);
+    left: var(--pos-x, -80px);
+    width: var(--icon-size, 34px);
+    height: var(--icon-size, 34px);
+    line-height: var(--icon-size, 34px);
+    font-size: var(--icon-font-size, 14px);
+    margin-top: calc(var(--icon-size, 34px) / -2);
+    z-index: 2;
+    border-radius: 99px;
+    &.default {
+        position: relative;
+        --pos-x: 0;
+        margin-top: 0;
+    }
+
+    &.slick-next {
+        right: var(--pos-x, -80px);
+        left: auto;
+    }
+
+    &:hover {
+        background-color: $theme-color;
+        color: $white-color;
+    }
+}
+
+.arrow-margin {
+    .slick-arrow {
+        top: calc(50% - 30px);
+    }
+}
+
+.arrow-wrap {
+    .slick-arrow {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &:hover {
+        .slick-arrow {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+@include xxl {
+    .slick-arrow {
+        --arrow-horizontal: -20px;
+        --pos-x: -70px;
+    }
+}
+
+@include ml {
+    .slick-arrow {
+        --arrow-horizontal: 40px;
+        --pos-x: -17px;
+    }
+}
+
+@include md {
+    .slick-dots {
+        margin: 40px 0 0 0;
+    }
+}
