@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Http\Controllers\Home\UserController;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -22,6 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -44,9 +47,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
+    public function getProfileImageUrlAttribute()
+    {
+        return $this->profile_image ? asset($this->profile_image) : asset('upload/no_image.jpg');
+    }
+
     public function blogs()
     {
         return $this->hasMany(Blog::class);
+    }
+
+    static public function getSingle($id){
+        return self::find($id);
     }
 
     static public function getRecordUser()

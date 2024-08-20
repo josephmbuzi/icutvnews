@@ -30,6 +30,7 @@ use App\Http\Controllers\Home\SitemapController;
 use App\Http\Controllers\Home\ErrorController;
 use App\Http\Controllers\Home\UserController;
 use App\Http\Controllers\Home\YoutubeController;
+use App\Http\Controllers\Home\CommentController;
 
 
 
@@ -76,6 +77,11 @@ Route::middleware(['adminuser'])->group(function () {
 
     Route::controller(UserController::class)->group(function () {
         Route::get('/all/users', 'users')->name('all.users');
+        Route::get('/add/user', 'addUsers')->name('add.user');
+        Route::post('/add/user', 'insertUsers')->name('insert.user');
+        Route::get('/edit/user{id}', 'editUsers')->name('edit.user');
+        Route::post('/edit/user{id}', 'updateUsers')->name('update.user');
+        Route::get('/delete/user{id}', 'deleteUser')->name('delete.user');
     
     });
 
@@ -176,6 +182,8 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/search/blogs', 'Search')->name('search.blogs');
     Route::get('/rss', 'rss');
     Route::get('/blog/details{id}/share/{platform}', [BlogController::class, 'SharePost'])->name('post.share');
+    Route::post('/blog/like/{id}', 'likeBlog')->name('blog.like');
+    Route::get('/author/{id}/blogs', 'authorBlogs')->name('author.blogs');
 
     // Route::get('/blog', 'HomeBlog')->name('home.blog');
 
@@ -183,13 +191,17 @@ Route::controller(BlogController::class)->group(function () {
 
 });
 
+Route::controller(CommentController::class)->group(function () {
+    Route::post('/blog/{id}/comments', 'store')->name('comments.store');
+});
+
 // Youtube All Route
 Route::controller(YoutubeController::class)->group(function () {
     Route::get('/all/youtube', 'AllYoutube')->name('all.youtube');
     Route::get('/add/youtube', 'AddYoutube')->name('add.youtube');
     Route::post('/store/youtube', 'StoreYoutube')->name('store.youtube');
-    Route::get('/edit/youtube{id}', 'EditYoutube')->name('edit.youtube');
-    Route::post('/update/youtube', 'UpdateYoutube')->name('update.youtube');
+    Route::get('/edit/youtube/{id}', 'EditYoutube')->name('edit.youtube');
+    Route::post('/update/youtube/{id}', 'UpdateYoutube')->name('update.youtube');
     Route::get('/delete/youtube{id}', 'DeleteYoutube')->name('delete.youtube');
     // Route::get('/blog/details{id}', 'BlogDetails')->name('blog.details');
     // Route::get('/blogs/all', 'BlogsAll')->name('blogs.all');

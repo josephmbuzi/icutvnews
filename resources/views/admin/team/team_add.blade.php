@@ -25,6 +25,24 @@
                         {{-- <input type="hidden" name="id" value="{{ $aboutpage->id }}"> --}}
 
                         <div class="row mb-3">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Select User</label>
+                            <div class="col-sm-10">
+                                <select name="user_id" id="user_id" class="form-control">
+                                    <option value="">Select User</option>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
+                                @error('user_id')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        
+
+                        <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Member Name</label>
                             <div class="col-sm-10">
                                 <input name="team_name" class="form-control" type="text" value="" id="example-text-input">

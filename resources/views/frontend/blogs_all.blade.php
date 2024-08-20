@@ -60,7 +60,7 @@
                         </div>
                         <div class="postbox__content">
                            <div class="postbox__meta">
-                              <span><a href="#"><i class="fal fa-user-circle"></i> Yamfumu </a></span>
+                              <span><a href="#"><i class="fal fa-user-circle"></i> {{ $blog->author->name }} </a></span>
                               <span><a href="#"><i class="fal fa-clock"></i> {{ Carbon\Carbon::parse($item->created_at)->format('F j, Y')}}</a></span>
 
                            </div>

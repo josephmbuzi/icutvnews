@@ -15,7 +15,6 @@
     $teams = App\Models\Team::oldest()->get();
     $allMultiImage = App\Models\MultiImage::all();
     $homeslide = App\Models\HomeSlide::find(1);
-    $testimonials = App\Models\Testimonial::latest()->get();
     $allfooter = App\Models\Footer::find(1);
 
 @endphp
@@ -40,7 +39,7 @@ About Area
                 <div class="col-xl-7 mb-30 mb-xl-0">
                     <div class="img-box1">
                         <div class="img1">
-                            <img src="{{ asset('frontend/assets/img/normal/about_1_1.jpg')}}" alt="About">
+                            <img src="{{ asset($aboutpage->about_image) }}" height="468" width="358" alt="About">
                         </div>
                         <div class="img2">
                             <img src="{{ asset('frontend/assets/img/normal/about_1_2.jpg')}}" alt="Image">
@@ -51,14 +50,14 @@ About Area
                 <div class="col-xl-5">
                     <div class="title-area mb-32">
                         <span class="sub-title">About Us</span>
-                        <h2 class="sec-title2">Over 25 years, we have been delivering real news</h2>
-                        <p class="sec-text">Suggests that the entity or organization has a longstanding history of providing trustworthy and reliable news coverage. The phrase "Over 25 years" indicates a long-established presence in the industry, which can instill confidence in the audience.</p>
+                        <h2 class="sec-title2">{{ $aboutpage->short_title }}</h2>
+                        <p class="sec-text">{{ $aboutpage->short_description }}</p>
                     </div>
                     <div class="checklist mt-n2 mb-35">
                         <ul>
-                            <li><i class="far fa-check-circle"></i> User experience</li>
-                            <li><i class="far fa-check-circle"></i> Strategy and Art Direction</li>
-                            <li><i class="far fa-check-circle"></i> Unique layouts Blocks</li>
+                            <li><i class="far fa-check-circle"></i> Business News</li>
+                            <li><i class="far fa-check-circle"></i> Trending News</li>
+                            <li><i class="far fa-check-circle"></i> Entertainment</li>
                         </ul>
                     </div>
                     <a href="about.html" class="th-btn">About More<i class="fas fa-arrow-up-right ms-2"></i></a>

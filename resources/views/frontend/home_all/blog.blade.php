@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<section class="space-top space-extra-bottom">
+{{-- <section class="space-top space-extra-bottom">
     <div class="container">
         <div class="row align-items-center">
             <div class="col">
@@ -39,7 +39,7 @@
                             </div>
                             <h3 class="box-title-20"><a class="hover-line" href="{{ route('blog.details',$item->id)}}">{{ $item->blog_title }}</a></h3>
                             <div class="blog-meta">
-                                <a href="author.html"><i class="far fa-user"></i>By - ICU TV</a>
+                                <a href="author.html"><i class="far fa-user"></i>By - {{ $item->author->name }}</a>
                                 <a href="{{ route('blog.details',$item->id)}}"><i class="fal fa-calendar-days"></i>{{ Carbon\Carbon::parse($item->created_at)->format('F j, Y')}}</a>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
         </div>
 
     </div>
-</section>
+</section> --}}
 
 
 <div class="space dark-theme bg-title-dark">
@@ -73,15 +73,28 @@
             <div class="col-auto video-center-mode">
                 <div class="blog-style3">
                     <div class="blog-img">
-                        <img src="{{ asset($item->youtube_image)}}" alt="blog image">
-                        <a href="https://youtu.be/2zuTSSdlavw?si=Hr8JYx9kgdaqY38g" class="play-btn popup-video"><i class="fas fa-play"></i></a>
+                        @php
+                            // Extract the YouTube video ID
+                            preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|[^v\n\s]+\/\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $item->youtube_link, $matches);
+                            $video_id = $matches[1] ?? null;
+                    
+                            // Construct the thumbnail URL
+                            $thumbnail_url = $video_id ? "https://img.youtube.com/vi/$video_id/hqdefault.jpg" : null;
+                        @endphp
+                    
+                        @if ($thumbnail_url)
+                            <img src="{{ $thumbnail_url }}" alt="blog image">
+                        @else
+                            <img src="{{ asset($item->youtube_image)}}" alt="blog image">
+                        @endif
+                    
+                        <a href="https://www.youtube.com/watch?v={{ $item->link }}" class="play-btn popup-video"><i class="fas fa-play"></i></a>
                     </div>
                     <div class="blog-content">
-                        <a data-theme-color="#4E4BD0" href="blog.html" class="category">Fashion</a>
                         <h3 class="box-title-30"><a class="hover-line" href="blog-details.html">{{ $item->link_title }}</a></h3>
                         <div class="blog-meta">
-                            <a href="author.html"><i class="far fa-user"></i>By - Tnews</a>
-                            <a href="blog.html"><i class="fal fa-calendar-days"></i>24 Mar, 2023</a>
+                            <a href="author.html"><i class="far fa-user"></i>By - {{ $item->author->name }}</a>
+                            <a href="blog.html"><i class="fal fa-calendar-days"></i>{{ Carbon\Carbon::parse($item->created_at)->format('F j, Y')}}</a>
                         </div>
                     </div>
                 </div>

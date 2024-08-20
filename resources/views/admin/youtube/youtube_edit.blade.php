@@ -19,14 +19,14 @@
 
                     <h4 class="card-title">Edit Blog Page Section</h4> <br><br>
 
-                    <form method="post" action="{{ route('update.youtube') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('update.youtube', $youtubes->id) }}" enctype="multipart/form-data">
                         @csrf
 
                         <input type="hidden" name="id" value="{{ $youtubes->id }}">
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Blog Title</label>
                             <div class="col-sm-10">
-                                <input name="blog_title" value="{{ $youtubes->link_title }}" type="text" id="example-text-input">
+                                <input name="link_title" value="{{ $youtubes->link_title }}" type="text" id="example-text-input">
 
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Blog Title</label>
                             <div class="col-sm-10">
-                                <input name="blog_title" value="{{ $youtubes->link }}" type="text" id="example-text-input">
+                                <input name="link" value="{{ $youtubes->link }}" type="text" id="example-text-input">
 
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Blog Image</label>
                             <div class="col-sm-10">
-                                <input name="blog_image" class="form-control" type="file" id="image">
+                                <input name="youtube_image" class="form-control" type="file" id="image">
                             </div>
                         </div>
                         <!-- end row -->

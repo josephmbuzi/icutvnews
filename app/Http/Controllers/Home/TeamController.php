@@ -7,6 +7,7 @@ use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Image;
+use App\Models\User;
 
 class TeamController extends Controller
 {
@@ -16,8 +17,9 @@ class TeamController extends Controller
     } //End Method
 
     public function AddTeam(){
+        $users = User::all(); // Fetch all users
         $teams = Team::latest()->get();
-        return view('admin.team.team_add',compact('teams'));
+        return view('admin.team.team_add', compact('users', 'teams'));
     } //End Method
 
     public function StoreTeam(Request $request){
@@ -59,6 +61,7 @@ class TeamController extends Controller
     } //End Method
 
     public function EditTeam($id){
+        $users = User::all(); // Fetch all users
         $teams = Team::findOrFail($id);
         return view('admin.team.team_edit',compact('teams'));
     } //End Method

@@ -5,98 +5,91 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Youtube;
-use App\Services\SchemaService;
 use Illuminate\Support\Carbon;
 use Image;
 
 class YoutubeController extends Controller
 {
     public function AddYoutube(){
-        $youtubes = Youtube::latest()->get();
         return view('admin.youtube.youtube_add');
-    } // END METHOD
+    }
 
     public function StoreYoutube(Request $request){
         $request->validate([
-            'youtube_image' => 'required',
-            'link_title' => 'required',
+            'youtube_image' => 'required|image',
+            'link_title' => 'required|string|max:255',
             'link' => 'required',
         ]);
+
         $image = $request->file('youtube_image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-
         Image::make($image)->save('upload/youtube/'.$name_gen);
         $save_url = 'upload/youtube/'.$name_gen;
 
-        $youtube = Youtube::create([
+        Youtube::create([
             'link_title' => $request->link_title,
             'link' => $request->link,
             'youtube_image' => $save_url,
+            'user_id' => auth()->id(),
             'created_at' => Carbon::now()
-
         ]);
 
-        return redirect()->route('all.youtube');
-    } // END METHOD
+        return redirect()->route('all.youtube')->with('success', 'YouTube link added successfully');
+    }
 
     public function EditYoutube($id){
         $youtubes = Youtube::findOrFail($id);
-        return view('admin.youtube.youtube_edit',compact('youtubes'));
+        return view('admin.youtube.youtube_edit', compact('youtubes'));
     }
 
-    public function UpdateYoutube(Request $request){
-        $youtubes_id = $request->id;
+    public function UpdateYoutube(Request $request, $id){
+        $youtube = Youtube::findOrFail($id);
+
         $request->validate([
-            'youtube_image' => 'required',
-            'link_title' => 'required',
+            'link_title' => 'required|string|max:255',
             'link' => 'required',
+            'youtube_image' => 'nullable|image',
         ]);
 
-        $youtube = Youtube::findOrFail($youtube_id);
+        $data = [
+            'link_title' => $request->link_title,
+            'link' => $request->link,
+            'updated_at' => Carbon::now()
+        ];
 
-        if ($request->file('youtube_image')){
+        if ($request->file('youtube_image')) {
+            // Delete the old image
+            if (file_exists($youtube->youtube_image)) {
+                unlink($youtube->youtube_image);
+            }
+
+            // Save the new image
             $image = $request->file('youtube_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-
             Image::make($image)->save('upload/youtube/'.$name_gen);
-            $save_url = 'upload/youtube/'.$name_gen;
-
-            $youtube->update([
-            'link_title' => $request->link_title,
-            'link' => $request->link,
-            'youtube_image' => $save_url,
-            'created_at' => Carbon::now()
-            ]);
-            $message = 'Youtube link Updated With Image Successfully';
-        } else {
-            $youtube->update ([
-            'link_title' => $request->link_title,
-            'link' => $request->link,
-            'created_at' => Carbon::now()
-            ]);
-            $message = 'Youtube link Updated Without Image Successfully';
+            $data['youtube_image'] = 'upload/youtube/'.$name_gen;
         }
 
-    } // END METHOD
+        $youtube->update($data);
+
+        return redirect()->route('all.youtube')->with('success', 'YouTube link updated successfully');
+    }
 
     public function DeleteYoutube($id){
-        $youtubes = Youtube::findOrFail($id);
-        $img = $youtubes->youtube_image;
-        unlink($img);
+        $youtube = Youtube::findOrFail($id);
 
-        Youtube::findOrFail($id)->delete();
+        // Delete the image
+        if (file_exists($youtube->youtube_image)) {
+            unlink($youtube->youtube_image);
+        }
 
-        $notification = array(
-            'message' => 'Youtube Link Data Deleted Successfully',
-            'alert-type' => 'success'
-        );
-        return redirect()->back()->with($notification);
-    } // end method
+        $youtube->delete();
+
+        return redirect()->back()->with('success', 'YouTube link deleted successfully');
+    }
 
     public function AllYoutube(){
-        $totalYoutubes = Youtube::count();
         $youtubes = Youtube::latest()->get();
-
-        return view('admin.youtube.youtube_all',compact('youtubes','totalYoutubes'));
+        return view('admin.youtube.youtube_all', compact('youtubes'));
     }
 }

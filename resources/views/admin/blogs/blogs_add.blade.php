@@ -38,12 +38,14 @@
                                 @enderror
                             </div>
                         </div>
+                        @if(Auth::user()->is_admin == 1)
                         <div class="row mb-3">
                             <label for="editor_choice" class="col-sm-2 col-form-label">Editor's Choice</label>
                             <div class="col-sm-10">
                                 <input type="checkbox" id="editor_choice" name="editor_choice" value="1">
                             </div>
                         </div>
+                        @endif
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Blog Title</label>
                             <div class="col-sm-10">

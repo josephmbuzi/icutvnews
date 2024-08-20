@@ -48,7 +48,7 @@
                <div class="th-blog blog-single">
                    <h2 class="blog-title">{{ $blog->blog_title }}</h2>
                    <div class="blog-meta">
-                       <a class="author" href="blog.html"><i class="far fa-user"></i>By - ICU TV</a>
+                       <a class="author" href="{{ route('author.blogs', $blog->author->id) }}"><i class="far fa-user"></i>By - {{ $blog->author->name }}</a>
                        <a href="blog.html"><i class="fal fa-calendar-days"></i>{{ Carbon\Carbon::parse($blog->created_at)->format('F j, Y')}}</a>
                        <span><i class="far fa-book-open"></i>5 Mins Read</span>
                    </div>
@@ -76,6 +76,7 @@
                                    Email :
                                    <i class="fas fa-envelope"></i>
                                </a>
+                               <button class="blog-info ms-sm-auto" data-blog-id="{{ $blog->id }}">{{ $blog->likes_count }} <i class="fas fa-thumbs-up"></i></button>
                            </div>
                            <div class="content">
                                <p>{!! $blog->blog_description !!}</p>
@@ -94,12 +95,14 @@
                </div>
                <div class="blog-author">
                    <div class="auhtor-img">
-                       <img src="assets/img/blog/blog-author.jpg" alt="Blog Author Image">
+                    @if($blog->author && $blog->author->profile_image)
+                       <img src="{{ asset($blog->author->profile_image) }}" alt="Blog Author Image">
+                    @endif
                    </div>
                    <div class="media-body">
                        <div class="author-top">
                            <div>
-                               <h3 class="author-name"><a class="text-inherit" href="team-details.html">Ronald Richards</a></h3>
+                               <h3 class="author-name"><a class="text-inherit" href="team-details.html">{{ $blog->author->name }}</a></h3>
                                <span class="author-desig">Founder & CEO</span>
                            </div>
                            <div class="social-links">
@@ -112,6 +115,51 @@
                        <p class="author-text">Adventurer and passionate travel blogger. With a backpack full of stories and a camera in hand, she takes her readers on exhilarating journeys around the world.</p>
                    </div>
                </div>
+               <div class="th-comments-wrap ">
+                <h2 class="blog-inner-title h3">Comments ({{ $blog->comments->count() }})</h2>
+                <ul class="comment-list">
+                    @foreach($blog->comments as $comment)
+                    <li class="th-comment-item">
+                        <div class="th-post-comment">
+                            <div class="comment-avater">
+                                <img src="assets/img/blog/comment-author-1.jpg" alt="Comment Author">
+                            </div>
+                            <div class="comment-content">
+                                <span class="commented-on"><i class="fas fa-calendar-alt"></i>{{ Carbon\Carbon::parse($comment->created_at)->format('F j, Y')}}</span>
+                                <h3 class="name">{{ $comment->name }}</h3>
+                                <p class="text">{{ $comment->comment }}</p>
+                                <div class="reply_and_edit">
+                                    <a href="blog-details.html" class="reply-btn"><i class="fas fa-reply"></i>Reply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    @endforeach
+                </ul>
+            </div> <!-- Comment end --> <!-- Comment Form -->
+            <form action="{{ route('comments.store', $blog->id) }}" method="POST">
+                @csrf
+                <div class="th-comment-form ">
+                    <div class="form-title">
+                        <h3 class="blog-inner-title mb-2">Leave a Comment</h3>
+                        <p class="form-text">Your email address will not be published. Required fields are marked *</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="name" placeholder="Your Name*" class="form-control" required>
+                            <i class="far fa-user"></i>
+                        </div>
+                        <div class="col-12 form-group">
+                            <textarea name="comment" placeholder="Write a Comment*" class="form-control" required></textarea>
+                            <i class="far fa-pencil"></i>
+                        </div>
+                        <div class="col-12 form-group mb-0">
+                            <button class="th-btn">Post Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
            </div>
            <div class="col-xxl-3 col-lg-4 sidebar-wrap">
                <aside class="sidebar-area">
@@ -161,6 +209,7 @@
        </div>
    </div>
 </section>
+
       <!-- breadcrumb area start -->
       {{-- <section class="breadcrumb__area breadcrumb-height include-bg p-relative" data-background="{{ asset('frontend/assets/img/breadcrumb/breadcurmb.jpg') }}">
         <div class="container">

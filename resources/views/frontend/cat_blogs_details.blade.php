@@ -47,13 +47,13 @@
                </div>
                <div class="blog-content">
                    <div class="blog-meta">
-                       <a class="author" href="blog.html"><i class="far fa-user"></i>By - Tnews</a>
+                       <a class="author" href="blog.html"><i class="far fa-user"></i>By - {{ $item->author->name }}</a>
                        <a href="blog.html"><i class="fal fa-calendar-days"></i>{{ Carbon\Carbon::parse($item->created_at)->format('F j, Y')}}</a>
                        <a href="{{ route('blog.details',$item->id)}}"><i class="far fa-comments"></i>Comments (3)</a>
                    </div>
                    <h2 class="blog-title box-title-30"><a href="{{ route('blog.details',$item->id)}}">{{ $item->blog_title }}</a>
                    </h2>
-                   <p class="blog-text">Fuel your competitive spirit, chase victory, and let sports be your legacy encapsulates the essence of embracing sports as a means to challenge oneself, strive for success, and leave a lasting impact. This phrase urges individuals to tap motivation getting to improve your tour skill.</p>
+                   {{-- <p class="blog-text">{!! Str::limit($item->blog_description, 200) !!}</p> --}}
                    <a href="{{ route('blog.details',$item->id)}}" class="th-btn style2">Read More<i class="fas fa-arrow-up-right ms-2"></i></a>
                </div>
            </div>

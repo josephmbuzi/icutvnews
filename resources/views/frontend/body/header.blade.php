@@ -31,7 +31,7 @@ Mobile Menu
                    <a href="{{ route('home') }}">Home</a>
                </li>
                <li><a href="{{ route('home.about') }}">About Us</a></li>
-               <li class="menu-item-has-children">
+               {{-- <li class="menu-item-has-children">
                    <a href="#">News</a>
                    <ul class="sub-menu">
                     @foreach ($categories as $cat)
@@ -39,7 +39,12 @@ Mobile Menu
                     @endforeach
                        
                    </ul>
-               </li>
+               </li> --}}
+               @foreach ($categories as $cat)
+               <li>
+                <a href="{{ route('category.blog',$cat->id) }}">{{ $cat->blog_category }}</a>
+            </li>
+            @endforeach
                <li>
                    <a href="{{ route('contact.us')}}">Contact</a>
                </li>
@@ -65,7 +70,7 @@ Header Area
                        </ul>
                    </div>
                </div>
-               <div class="col-auto">
+               {{-- <div class="col-auto">
                    <div class="header-links">
                        <ul>
                            <li>
@@ -79,7 +84,7 @@ Header Area
                            </li>
                        </ul>
                    </div>
-               </div>
+               </div> --}}
            </div>
        </div>
    </div>
@@ -123,14 +128,19 @@ Header Area
                                </li>
                                <li><a href="{{ route('home.about') }}">About Us</a></li>
 
-                               <li class="menu-item-has-children">
+                               {{-- <li class="menu-item-has-children">
                                    <a href="#">News</a>
                                    <ul class="sub-menu">
                                     @foreach ($categories as $cat)
                                         <li><a href="{{ route('category.blog',$cat->id) }}">{{ $cat->blog_category }}</a></li>
                                     @endforeach
                                    </ul>
-                               </li>
+                               </li> --}}
+                               @foreach ($categories as $cat)
+               <li>
+                <a href="{{ route('category.blog',$cat->id) }}">{{ $cat->blog_category }}</a>
+            </li>
+            @endforeach
                                <li>
                                 <a href="{{ route('contact.us')}}">Contact</a>
                             </li>

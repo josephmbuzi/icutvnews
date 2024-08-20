@@ -30,6 +30,83 @@
 Blog Area  
 ==============================-->
 
+{{-- <div class="th-hero-wrapper hero-1" id="hero">
+   <div class="hero-slider-1 th-carousel" data-fade="true" data-slide-show="1" data-md-slide-show="1" data-adaptive-height="true">
+      @foreach ($blogs as $item)
+       <div class="th-hero-slide">
+           <div class="th-hero-bg" data-overlay="black" data-opacity="6" data-bg-src="{{ asset($item->blog_image)}}"></div>
+           <div class="container">
+               <div class="blog-bg-style1">
+                   <a data-theme-color="#6234AC" data-ani="slideinup" data-ani-delay="0.1s" href="blog.html" class="category">{{$item['category']['blog_category']}}</a>
+                   <h3 data-ani="slideinup" data-ani-delay="0.3s" class="box-title-50"><a class="hover-line" href="{{ route('blog.details',$item->id)}}">{{ $item->blog_title }}</a></h3>
+                   <div class="blog-meta" data-ani="slideinup" data-ani-delay="0.5s">
+                       <a href="author.html"><i class="far fa-user"></i>By - {{ $item->author->name }}</a>
+                       <a href="blog.html"><i class="fal fa-calendar-days"></i>{{ Carbon\Carbon::parse($item->created_at)->format('F j, Y')}}</a>
+                   </div>
+                   <p class="blog-text" data-ani="slideinup" data-ani-delay="0.7s">{!! Str::limit($item->blog_description, 200) !!}</p>
+               </div>
+           </div>
+       </div>
+       @endforeach
+   </div>
+   <div class="hero-tab-area">
+       <div class="container">
+           <div class="hero-tab" data-asnavfor=".hero-slider-1">
+            @foreach ($blogs as $item)
+               <div class="tab-btn active">
+                   <img src="{{ asset($item->blog_image)}}" height="40" width="100" alt="Image">
+               </div>
+            @endforeach
+           </div>
+       </div>
+   </div>
+</div> --}}
+<div class="th-hero-wrapper hero-1" id="hero">
+   <div class="hero-slider-1 th-carousel" data-fade="true" data-slide-show="1" data-md-slide-show="1" data-adaptive-height="true">
+      @foreach ($blogs as $item)
+       <div class="th-hero-slide">
+           <div class="th-hero-bg" data-overlay="black" data-opacity="6" data-bg-src="{{ asset($item->blog_image)}}"></div>
+           <div class="container">
+               <div class="blog-bg-style1">
+                   <a data-theme-color="#6234AC" data-ani="slideinup" data-ani-delay="0.1s" href="blog.html" class="category">{{$item['category']['blog_category']}}</a>
+                   <h3 data-ani="slideinup" data-ani-delay="0.3s" class="box-title-50"><a class="hover-line" href="{{ route('blog.details',$item->id)}}">{{ $item->blog_title }}</a></h3>
+                   <div class="blog-meta" data-ani="slideinup" data-ani-delay="0.5s">
+                       <a href="author.html"><i class="far fa-user"></i>By - {{ $item->author->name }}</a>
+                       <a href="blog.html"><i class="fal fa-calendar-days"></i>{{ Carbon\Carbon::parse($item->created_at)->format('F j, Y')}}</a>
+                   </div>
+                   <p class="blog-text" data-ani="slideinup" data-ani-delay="0.7s">Conveys the idea that technology has become accessible and easy to use, simplifying our daily tasks and routines</p>
+               </div>
+           </div>
+
+       </div>
+      @endforeach
+   </div>
+   <div class="hero-tab-area">
+       <div class="container">
+           <div class="hero-tab" data-asnavfor=".hero-slider-1">
+               <div class="tab-btn active">
+                   <img src="assets/img/hero/hero_1_1.jpg" alt="Image">
+               </div>
+               <div class="tab-btn">
+                   <img src="assets/img/hero/hero_1_2.jpg" alt="Image">
+               </div>
+               <div class="tab-btn">
+                   <img src="assets/img/hero/hero_1_3.jpg" alt="Image">
+               </div>
+               <div class="tab-btn">
+                   <img src="assets/img/hero/hero_1_4.jpg" alt="Image">
+               </div>
+               <div class="tab-btn">
+                   <img src="assets/img/hero/hero_1_5.jpg" alt="Image">
+               </div>
+               <div class="tab-btn">
+                   <img src="assets/img/hero/hero_1_6.jpg" alt="Image">
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
 <div  class="space" class="">
    <div class="container">
        <div class="row align-items-center">
@@ -49,13 +126,17 @@ Blog Area
          @foreach ($popularBlogs as $popularItem)
            <div class="col-sm-6 col-xl-4">
                <div class="blog-style1">
-                   <div class="blog-img">
-                       <img src="{{ asset($popularItem->blog_image)}}" alt="blog image">
-                     
-                   </div>
+                  <div class="blog-img">
+                     <img src="{{ asset($popularItem->blog_image)}}" alt="blog image" width="350" height="300">
+                 </div>
                    <h3 class="box-title-22"><a class="hover-line" href="{{ route('blog.details',$popularItem->id)}}">{{$popularItem->blog_title}}</a></h3>
+                   <p class="short-description">
+                     {{-- {!! Str::limit($item->blog_description, 200) !!} --}}
+                     {{-- {{ \Illuminate\Support\Str::limit($popularItem->blog_description, 100) }}  --}}
+                     <!-- Adjust the character limit (100) as needed -->
+                 </p>
                    <div class="blog-meta">
-                       <a href="{{ route('blog.details',$popularItem->id)}}"><i class="far fa-user"></i>By - Tnews</a>
+                       <a href="{{ route('blog.details',$popularItem->id)}}"><i class="far fa-user"></i>By - {{ $popularItem->author->name }}</a>
                        <a href="{{ route('blog.details',$popularItem->id)}}"><i class="fal fa-calendar-days"></i>{{ Carbon\Carbon::parse($popularItem->created_at)->format('F j, Y')}}</a>
                    </div>
                </div>
@@ -64,6 +145,7 @@ Blog Area
        </div>
    </div>
 </div>
+
 
 
 

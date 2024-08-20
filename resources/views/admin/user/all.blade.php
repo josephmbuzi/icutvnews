@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Blog Category All</h4>
+                <h4 class="mb-sm-0">All Users</h4>
 
                 
 
@@ -21,14 +21,16 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-
-                    <h4 class="card-title">Blog Category All Data</h4>
                     
                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                         <tr>
                             <th>SN</th>
-                            <th>Blog Category Name</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Email Verified</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
                             <th>Action</th>
                             
                         </tr>
@@ -36,19 +38,31 @@
 
 
                         <tbody>
-                             
-                        <tr>
-                            <td>  </td>
-                            <td> <h3>Joseph</h3> </td>
-                           <td>
-                                {{-- <a href="{{ route('edit.users',$item->id) }}" class="btn btn-info sm" title="Edit Data"> <i class="fas fa-edit"></i></a>
-                                <a href="{{ route('delete.users',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i></a> --}}
-                            </td>
-                            
-                        </tr>
+                            @php($i = 1)
+                            @forelse ($getRecord as $value)
+                            <tr>
+                                <td>{{  $i++ }}</td>
+                                <td> <p>{{ $value->name}}</p> </td>
+                                <td> <p>{{ $value->email}}</p> </td>
+                                <td> <p>{{ !empty($value->email_verified_at) ? 'Yes' : 'No' }}</p> </td>
+                                <td> <p>{{ !empty($value->status) ? 'Verified' : 'No' }}</p> </td>
+                                <td> <p>{{ $value->created_at}}</p> </td>
+                               <td>
+                                    <a href="{{ route('edit.user',$value->id) }}" class="btn btn-info sm" title="Edit Data"> <i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('delete.user',$value->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i></a>
+                                </td>
+                                
+                            </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="100%">Record not found</td>
+                                </tr>
+                            @endforelse
                        
                         </tbody>
                     </table>
+                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+
 
                 </div>
             </div>

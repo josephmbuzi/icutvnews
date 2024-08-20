@@ -1841,6 +1841,13 @@ textarea.is-invalid {
   margin-top: -0.22em;
 }
 
+.short-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px; /* Adjust the spacing below the paragraph */
+}
+
+
 .box-title2 {
   font-size: 20px;
   line-height: 1.5;
